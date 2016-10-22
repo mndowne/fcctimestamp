@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+app.set('port', (process.env.PORT || 8080));
 /*app.get('/',function(req,res){
   res.sendFile(__dirname + '/index.html');
 });*/
@@ -122,4 +123,4 @@ app.get('/:date', function(req,res){
   res.json(json);
 });
 
-app.listen(8080, function () {console.log('server is on 8080');});
+app.listen(app.get('port'), function () {console.log('server is on 8080 or on the process enviornment port');});
