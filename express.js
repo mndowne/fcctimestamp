@@ -10,57 +10,56 @@ app.use(express.static(__dirname));
 app.get('/:date', function(req,res){
   
   var arr = req.params.date.split(' ');
-  
+  var nDateStr = "";
+  var stamp = 0;
   
   if (isNaN(req.params.date) == false){
-  var nDate = new Date(req.params.date*1000);
-  var nDateMonth = nDate.getMonth() +1;
-  var nDateYear = nDate.getFullYear();
-  var nDateDay = nDate.getDate();
-  var stamp = req.params.date;
-  switch (nDateMonth){
-    case 1:
-      nDateMonth = "January";
-      break;
-    case 2:
-      nDateMonth = "Febuary";
-      break;
-    case 3:
-      nDateMonth = "March";
-      break;
-    case 4:
-      nDateMonth = "April";
-      break;
-    case 5:
-      nDateMonth = "May";
-      break;
-    case 6:
-      nDateMonth = "June";
-      break;
-    case 7:
-      nDateMonth = "July";
-      break;
-    case 8:
-      nDateMonth = "August";
-      break;
-    case 9:
-      nDateMonth = "September";
-      break;
-    case 10:
-      nDateMonth = "October";
-      break;
-    case 11:
-      nDateMonth = "November";
-      break;
-    case 12:
-      nDateMonth = "December";
-      break;
-   }
+    var nDate = new Date(req.params.date*1000);
+    var nDateMonth = nDate.getMonth() +1;
+    var nDateYear = nDate.getFullYear();
+    var nDateDay = nDate.getDate();
+    stamp = req.params.date;
+    switch (nDateMonth){
+      case 1:
+        nDateMonth = "January";
+        break;
+      case 2:
+        nDateMonth = "Febuary";
+        break;
+      case 3:
+        nDateMonth = "March";
+        break;
+      case 4:
+        nDateMonth = "April";
+        break;
+      case 5:
+        nDateMonth = "May";
+        break;
+      case 6:
+        nDateMonth = "June";
+        break;
+      case 7:
+        nDateMonth = "July";
+        break;
+      case 8:
+        nDateMonth = "August";
+        break;
+      case 9:
+        nDateMonth = "September";
+        break;
+      case 10:
+        nDateMonth = "October";
+        break;
+      case 11:
+        nDateMonth = "November";
+        break;
+      case 12:
+        nDateMonth = "December";
+        break;
+    }
    
-  var nDateStr = nDateMonth + " " + nDateDay + ", " + nDateYear;
+    nDateStr = nDateMonth + " " + nDateDay + ", " + nDateYear;
 
-  var json = {unix: stamp,
-              natural: nDateStr }; 
   }
   else if (arr.length == 3){
     var month = -1; 
@@ -101,14 +100,24 @@ app.get('/:date', function(req,res){
       month = 11;
     }
     console.log('poop');
-  var d = new Date(arr[2],month,arr[1]); 
- var stamp = Math.floor(d / 1000); 
-  var nDateStr = arr[0] + " " + arr[1] + ", " + arr[2];
-  
-  var json = {unix: stamp,
-              natural: nDateStr }; 
+    var d = new Date(arr[2],month,arr[1]); 
+    stamp = Math.floor(d / 1000); 
+    nDateStr = arr[0] + " " + arr[1] + ", " + arr[2];
+ 
+    if (month == -1 || arr[1] < 1 || arr[1] > 31 || arr[2] < 1970)
+    {
+      stamp = null;
+      nDateStr = null;
+    }
   }
 
+  else {
+    stamp = null;
+    nDateStr = null;
+  }
+
+  var json = {unix: stamp,
+              natural: nDateStr }; 
   console.log(req.params.date);  
   res.json(json);
 });
