@@ -9,5 +9,14 @@
   "author": "mndowne",
   "license": "ISC",
   "dependencies":{
-  "express":"*"}
+  "express":"*"
+  },
+  "engines":{
+    "node": "*"
+  },
+  "repsoitory": {
+    "type": "git",
+    "url": "https://github.com/mndowne/fcctimestamp"
+  }
+
 }
