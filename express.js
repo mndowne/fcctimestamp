@@ -64,40 +64,40 @@ app.get('/:date', function(req,res){
   }
   else if (arr.length == 3){
     var month = -1; 
-    if (arr[0] == "January"){
+    if (arr[0] == "January" || arr[0] == "january"){
       month = 0;
     }
-    else if (arr[0] == "Febuary"){
+    else if (arr[0] == "Febuary" || arr[0] == "febuary"){
       month = 1;
     }
-    else if (arr[0] == "March"){
+    else if (arr[0] == "March" || arr[0] == "march"){
       month = 2;
     }
-    else if (arr[0] == "April"){
+    else if (arr[0] == "April" || arr[0] == "april"){
       month = 3;
     }
-    else if (arr[0] == "May"){
+    else if (arr[0] == "May" || arr[0] == "may"){
       month = 4;
     }
-    else if (arr[0] == "June"){
+    else if (arr[0] == "June" || arr[0] == "june"){
       month = 5;
     }
-    else if (arr[0] == "July"){
+    else if (arr[0] == "July" || arr[0] == "july"){
       month = 6;
     }
-    else if (arr[0] == "August"){
+    else if (arr[0] == "August" || arr[0] == "august"){
       month = 7;
     }
-    else if (arr[0] == "September"){
+    else if (arr[0] == "September" || arr[0] == "september"){
       month = 8;
     }
-    else if (arr[0] == "October"){
+    else if (arr[0] == "October" || arr[0] == "october"){
       month = 9;
     }
-    else if (arr[0] == "November"){
+    else if (arr[0] == "November" || arr[0] == "november"){
       month = 10;
     }
-    else if (arr[0] == "December"){
+    else if (arr[0] == "December" || arr[0] == "december"){
       month = 11;
     }
     console.log('poop');
