@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 3000));
 /*app.get('/',function(req,res){
   res.sendFile(__dirname + '/index.html');
 });*/
@@ -25,7 +25,7 @@ app.get('/:date', function(req,res){
         nDateMonth = "January";
         break;
       case 2:
-        nDateMonth = "Febuary";
+        nDateMonth = "February";
         break;
       case 3:
         nDateMonth = "March";
@@ -67,7 +67,7 @@ app.get('/:date', function(req,res){
     if (arr[0] == "January" || arr[0] == "january"){
       month = 0;
     }
-    else if (arr[0] == "Febuary" || arr[0] == "febuary"){
+    else if (arr[0] == "February" || arr[0] == "february"){
       month = 1;
     }
     else if (arr[0] == "March" || arr[0] == "march"){
@@ -123,4 +123,4 @@ app.get('/:date', function(req,res){
   res.json(json);
 });
 
-app.listen(app.get('port'), function () {console.log('server is on 8080 or on the process enviornment port');});
+app.listen(app.get('port'), function () {console.log('server is on 8080 or on the process environment port');});
